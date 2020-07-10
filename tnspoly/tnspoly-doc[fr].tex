@@ -1,0 +1,346 @@
+%\documentclass[12pt,a4paper]{scrartcl}
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter % Technical doc - START
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ucs}
+
+\usepackage[french]{babel,varioref}
+
+\usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{enumitem}
+
+\usepackage{multicol}
+
+\usepackage{makecell}
+
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage{amsthm}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{listingsutf8}
+
+\usepackage{ifplatform}
+
+\usepackage{ifthen}
+
+\usepackage{cbdevtool}
+
+
+
+% MISC
+
+\newtcblisting{latexex}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing side text
+}
+
+\newtcblisting{latexex-flat}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+}
+
+\newtcblisting{latexex-alone}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing only
+}
+
+
+\newcommand\env[1]{\texttt{#1}}
+\newcommand\macro[1]{\env{\textbackslash{}#1}}
+
+
+
+\setlength{\parindent}{0cm}
+\setlist{noitemsep}
+
+\theoremstyle{definition}
+\newtheorem*{remark}{Remarque}
+
+\usepackage[raggedright]{titlesec}
+
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{0.5em}
+
+
+\newcommand\separation{
+	\medskip
+	\hfill\rule{0.5\textwidth}{0.75pt}\hfill
+	\medskip
+}
+
+
+\newcommand\extraspace{
+	\vspace{0.25em}
+}
+
+
+\newcommand\whyprefix[2]{%
+	\textbf{\prefix{#1}}-#2%
+}
+
+\newcommand\mwhyprefix[2]{%
+	\texttt{#1 = #1-#2}%
+}
+
+\newcommand\prefix[1]{%
+	\texttt{#1}%
+}
+
+
+\newcommand\inenglish{\@ifstar{\@inenglish@star}{\@inenglish@no@star}}
+
+\newcommand\@inenglish@star[1]{%
+	\emph{\og #1 \fg}%
+}
+
+\newcommand\@inenglish@no@star[1]{%
+	\@inenglish@star{#1} en anglais%
+}
+
+
+\newcommand\ascii{\texttt{ASCII}}
+
+
+% Example
+\newcounter{paraexample}[subsubsection]
+
+\newcommand\@newexample@abstract[2]{%
+	\paragraph{%
+		#1%
+		\if\relax\detokenize{#2}\relax\else {} -- #2\fi%
+	}%
+}
+
+
+
+\newcommand\newparaexample{\@ifstar{\@newparaexample@star}{\@newparaexample@no@star}}
+
+\newcommand\@newparaexample@no@star[1]{%
+	\refstepcounter{paraexample}%
+	\@newexample@abstract{Exemple \theparaexample}{#1}%
+}
+
+\newcommand\@newparaexample@star[1]{%
+	\@newexample@abstract{Exemple}{#1}%
+}
+
+
+% Change log
+\newcommand\topic{\@ifstar{\@topic@star}{\@topic@no@star}}
+
+\newcommand\@topic@no@star[1]{%
+	\textbf{\textsc{#1}.}%
+}
+
+\newcommand\@topic@star[1]{%
+	\textbf{\textsc{#1} :}%
+}
+
+\makeatother % Technical doc - END
+
+
+\usepackage{ tnspoly }
+
+
+\begin{document}
+
+\renewcommand\labelitemi{\raisebox{0.125em}{\tiny\textbullet}}
+\renewcommand{\labelitemii}{---}
+
+\title{   %
+	Le package \texttt{ tnspoly }\\%
+	{\footnotesize Code source disponible sur \url{ https://github.com/typensee-latex/tnstools.git }.}\\%
+{\footnotesize Version \texttt{0.0.0-beta} développée et testée sur \macosxname{}.}%
+}
+\author{Christophe BAL}
+\date{2020-07-10}{{{{{{{{{{{{
+
+\maketitle
+
+
+\vspace{2em}
+
+\hrule
+
+\tableofcontents
+
+\vspace{1.5em}
+
+\hrule
+
+\newpage
+
+\section{Introduction}
+
+Le package \verb+tnspoly+ propose des macros utiles quand l'on parle de polynômes ou de séries formelles.
+
+\begin{remark}
+	Ce package s'appuie sur \verb+tnscom+ disponible sur \url{https://github.com/typensee-latex/tnscom.git}
+\end{remark}
+\section{Polynômes}
+
+\newparaexample{Polynômes}
+
+\begin{latexex}
+$\setpoly{R}{X}$ ou
+$\setpoly{R}{X | Y | Z}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Fractions polynômiales}
+
+\begin{latexex}
+$\setpolyfrac{Q}{T}$ ou
+$\setpolyfrac{Q}%
+             {S_1 | S_2 | \dots | S_k}$
+\end{latexex}
+
+
+
+
+% ---------------------- %
+
+
+\section{Séries formelles classiques}
+
+\newparaexample{Séries formelles}
+
+\begin{latexex}
+$\setserie{C}{X}$ ou
+$\setserie{C}{T | O | P}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Corps des fractions de séries formelles}
+
+\begin{latexex}
+$\setseriefrac{Z}{X}$ ou
+$\setseriefrac{Z}{Z | T | O | P}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\section{Polynômes de Laurent et séries formelles de Laurent}
+
+\newparaexample{Polynômes de Laurent}
+
+Ci-dessous, la notation $\setpolylaurent{R}{X_1 | X_2}$ n'est pas standard.
+
+\begin{latexex}
+$\setpolylaurent{R}{X} =
+ \setpoly{R}{X | X^{-1}}$
+
+$\setpolylaurent{R}{X_1 | X_2} =
+ \setpoly{R}{X_1 | X_1^{-1} %
+           | X_2 | X_2^{-1}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Séries formelles de Laurent}
+
+Ci-dessous, la notation $\setserielaurent{Q}{X_1 | X_2}$ n'est pas standard.
+
+\begin{latexex}
+$\setserielaurent{Q}{X} =
+ \setserie{Q}{X | X^{-1}}$
+
+$\setserielaurent{Q}{X_1 | X_2} =
+ \setserie{Q}{X_1 | X_1^{-1} %
+            | X_2 | X_2^{-1}}$
+\end{latexex}
+
+
+% ---------------------- %
+\newpage
+
+\section{Historique}
+
+Nous ne donnons ici qu'un très bref historique récent
+\footnote{
+	On ne va pas au-delà de un an depuis la dernière version.
+}
+de \verb+tnspoly+ à destination de l'utilisateur principalement.
+Tous les changements sont disponibles uniquement en anglais dans le dossier \verb+change-log+ : voir le code source de \verb+tnspoly+ sur \verb+github+.
+
+\begin{description}
+% Changes shown - START
+
+    \medskip
+    \item[2020-07-10] Première version \verb+0.0.0-beta+.
+% ------------------------ %
+
+% Changes shown - END 
+\end{description}
+
+
+\newpage
+\section{Toutes les fiches techniques} \label{techincal-ids}
+
+
+\subsection{Polynômes}
+
+\subsubsection{Polynômes}
+
+\IDmacro*{setpoly}{2}
+
+\IDmacro*{setpolyfrac}{2}
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Séries formelles classiques}
+
+\IDmacro*{setserie}{2}
+
+\IDmacro*{setseriefrac}{2}
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Polynômes de Laurent et séries formelles de Laurent}
+
+\IDmacro*{setpolylaurent}{2}
+
+\IDmacro*{setserielaurent}{2}
+
+\IDarg{1} l'ensemble auquel les coefficients appartiennent.
+
+\IDarg{2} cet argument est une suite de "morceaux" séparés par des barres \verb+|+, chaque morceau étant une variable formelle.
+
+
+\end{document}

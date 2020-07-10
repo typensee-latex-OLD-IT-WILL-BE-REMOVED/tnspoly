@@ -1,0 +1,8 @@
+==========
+2020-07-10
+==========
+
+**First version version::``0.0.0-beta`` of ¨tnspoly:** this package helps to write sets of polynomials and formal series.
+
+warning::
+    This package uses the package `tnscom`.
