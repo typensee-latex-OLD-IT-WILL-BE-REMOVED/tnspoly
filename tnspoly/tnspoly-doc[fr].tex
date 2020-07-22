@@ -38,6 +38,12 @@
 \usepackage{cbdevtool}
 
 
+% Sections numbering
+
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\alph{subsection}.}
+\renewcommand\thesubsubsection{\roman{subsubsection}.}
+
 
 % MISC
 
@@ -359,19 +365,30 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \section{Toutes les fiches techniques} \label{techincal-ids}
 
 
+
+
+
+
 \subsection{Polynômes}
+
 
 
 \IDmacro*{setpoly    }{2}
 
 \IDmacro*{setpolyfrac}{2}
+
+
 \subsection{Séries formelles classiques}
+
 
 
 \IDmacro*{setserie    }{2}
 
 \IDmacro*{setseriefrac}{2}
+
+
 \subsection{Polynômes et séries formelles de Laurent}
+
 
 
 \IDmacro*{setpolylaurent }{2}
@@ -381,6 +398,8 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \IDarg{1} l'ensemble auquel les coefficients appartiennent.
 
 \IDarg{2} cet argument est une suite de "morceaux" séparés par des barres \verb+|+, chaque morceau étant une variable formelle.
+
+
 
 
 \end{document}
