@@ -12,6 +12,8 @@
 \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry}
 \usepackage{enumitem}
 
+\usepackage{pgffor}
+
 \usepackage{multicol}
 
 \usepackage{makecell}
@@ -35,7 +37,7 @@
 
 \usepackage{ifthen}
 
-\usepackage{cbdevtool}
+\usepackage{macroenvsign}
 
 
 % Sections numbering
@@ -377,6 +379,10 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \IDmacro*{setpolyfrac}{2}
 
+\IDarg{1} l'ensemble auquel les coefficients appartiennent.
+
+\IDarg{2} cet argument est une suite de "morceaux" séparés par des barres \verb+|+, chaque morceau étant une variable formelle.
+
 
 \subsection{Séries formelles classiques}
 
@@ -385,6 +391,10 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \IDmacro*{setserie    }{2}
 
 \IDmacro*{setseriefrac}{2}
+
+\IDarg{1} l'ensemble auquel les coefficients appartiennent.
+
+\IDarg{2} cet argument est une suite de "morceaux" séparés par des barres \verb+|+, chaque morceau étant une variable formelle.
 
 
 \subsection{Polynômes et séries formelles de Laurent}
