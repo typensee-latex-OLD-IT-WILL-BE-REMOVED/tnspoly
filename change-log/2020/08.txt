@@ -1,4 +1,11 @@
 ==========
+2020-08-23
+==========
+
+**Backstage machinery:** ¨tnscom has renamed ``\tns@multi@args`` to ``\tns@multi@wrap``.
+
+
+==========
 2020-08-09
 ==========
 
